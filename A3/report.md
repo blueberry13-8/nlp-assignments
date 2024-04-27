@@ -1,5 +1,12 @@
 # Solutions Report
 
+## Student information
+
+- Name: Viktor Kovalev
+- Email: vi.kovalev@innopolis.university
+- Codalab nickname: blueberry13
+- github link: [github.com/blueberry13-8/nlp-assignments/tree/main/A3](https://github.com/blueberry13-8/nlp-assignments/tree/main/A3)
+
 ## Data
 
 I took data from codalab and `RuNNE` from huggingface, therefore, in total it was 980 train samples and 
@@ -35,6 +42,18 @@ Bert was used for feature extraction. In the end was classifier which output ten
 Therefore, it wasn't nested ner, this solution only for usuall ner.
 
 ### Results
+
+I got following results in my local evaluation stage on the evaluation set: `f1 = 0.709213`. It's pretty good results. Also I look at the predictions of the model and it was accurate enough. But on the codalab I got bad score. 
+
+I looked at evaluator from the github repository which you provide in the competition and found how it's scoring. Evaluator use just exact comparison, which is pretty bad for such task. For instance if my model output:
+```bash
+{"id": 519, "ners": [[0, 8, PERSON]]}
+```
+But the answer is:
+```bash
+{"id": 519, "ners": [[0, 6, PERSON]]}
+```
+The score will be 0. In my opinion, it's not the good way for scoring (I am just offendent by low score student T_T)
 
 I trained model for 18 epochs and here is the result:
 1. dev set: `f1 = 0.12`
